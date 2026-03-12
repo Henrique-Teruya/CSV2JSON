@@ -25,30 +25,66 @@ document.querySelector('form').addEventListener('submit', function (e) {
 });
 
 function parseCSV(text) {
-    const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
-    if (lines.length === 0) return [];
+    const rows = [];
+    let currentField = '';
+    let inQuotes = false;
+    let currentRow = [];
 
-    const headers = parseCSVLine(lines[0]).map(h => h.toLowerCase().trim());
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (inQuotes) {
+            if (char === '"' && next === '"') {
+                currentField += '"';
+                i++;
+            } else if (char === '"') {
+                inQuotes = false;
+            } else {
+                currentField += char;
+            }
+        } else {
+            if (char === '"') {
+                inQuotes = true;
+            } else if (char === ',') {
+                currentRow.push(currentField.trim());
+                currentField = '';
+            } else if (char === '\r' || char === '\n') {
+                currentRow.push(currentField.trim());
+                currentField = '';
+                if (currentRow.some(field => field !== '')) {
+                    rows.push(currentRow);
+                }
+                currentRow = [];
+                if (char === '\r' && next === '\n') {
+                    i++;
+                }
+            } else {
+                currentField += char;
+            }
+        }
+    }
+
+    if (currentField !== '' || currentRow.length > 0) {
+        currentRow.push(currentField.trim());
+        if (currentRow.some(field => field !== '')) {
+            rows.push(currentRow);
+        }
+    }
+
+    if (rows.length === 0) return [];
+
+    const headers = rows[0].map(h => h.toLowerCase().trim());
     const results = [];
 
-    const clean = (val) => (typeof val === 'string' ? val.replace(/['"]/g, '').trim() : val);
-
-    for (let i = 1; i < lines.length; i++) {
-        const values = parseCSVLine(lines[i]);
+    for (let i = 1; i < rows.length; i++) {
+        const values = rows[i];
         const row = {};
 
         headers.forEach((header, index) => {
             const val = values[index] !== undefined ? values[index] : '';
             const cleaned = clean(val);
-
-            // Mantendo a mesma lógica original de conversões específicas dos campos numéricos 
-            if (header === 'price') {
-                row[header] = parseFloat(cleaned) || 0;
-            } else if (header === 'quantity') {
-                row[header] = parseInt(cleaned, 10) || 0;
-            } else {
-                row[header] = cleaned;
-            }
+            row[header] = autoType(cleaned);
         });
 
         results.push(row);
@@ -57,33 +93,24 @@ function parseCSV(text) {
     return results;
 }
 
-function parseCSVLine(line) {
-    const result = [];
-    let current = '';
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        if (inQuotes) {
-            if (char === '"' && line[i + 1] === '"') {
-                current += '"';
-                i++; // Pula as aspas que vêm juntas
-            } else if (char === '"') {
-                inQuotes = false;
-            } else {
-                current += char;
-            }
-        } else {
-            if (char === '"') {
-                inQuotes = true;
-            } else if (char === ',') {
-                result.push(current);
-                current = '';
-            } else {
-                current += char;
-            }
-        }
+function clean(val) {
+    if (typeof val === 'string') {
+        return val.replace(/['"]/g, '').trim();
     }
-    result.push(current);
-    return result;
+    return val;
+}
+
+function autoType(val) {
+    if (val === '' || val === null || val === undefined) return val;
+
+    // Check if it's a number
+    if (/^\d+$/.test(val)) {
+        return parseInt(val, 10);
+    }
+
+    if (/^\d+\.\d+$/.test(val)) {
+        return parseFloat(val);
+    }
+
+    return val;
 }
