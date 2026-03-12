@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>CSV2JSON</h1>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="../index.html">Convert .CSV</a></li>
+                    <li><a href="index.html"> .CSV</a></li>
+                </ul>
+            </nav>
+        </div>
+        <hr class="line-gray">
+
+        <!-- CONTENT -->
+        <main class="content">
+
+            <!-- Upload Section -->
+            <div class="upload">
+                <form action="">
+                    <div class="title">
+                        <h2>Upload CSV File</h2>
+                    </div>
+                    <input type="file" name="file" id="file" accept=".csv">
+                    <button type="submit">Convert</button>
+                    <div class="content">
+                        <div class="title">
+                            <h2>Result</h2>
+                        </div>
+                        <textarea id="result" class="result-area__output"
+                            placeholder='Your converted JSON will appear here...' readonly></textarea>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
