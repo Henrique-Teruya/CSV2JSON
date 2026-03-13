@@ -4,9 +4,11 @@
 - Este projeto foca em ter uma interface **extremamente responsiva**.
 - Para atingir isso, todas as medidas do projeto (como `width`, `height`, `margin`, `padding` etc) devem ser baseadas **apenas em `%` (porcentagens)** ou medidas relativas aplicáveis diretamente ao viewport ou seus containeres. Medidas fixas, como `px`, devem ser integralmente evitadas no layout para que a ferramenta se adapte livremente a todas as resoluções e tamanhos de tela.
 
+## 1.1. Menos é mais
+- Quanto menor o código, mais fácil é manter e debugar, mais responsivo e mais otimizado, quanto menos linhas utilizadas mantendo a responsividade e simplicidade, melhor.
+
 ## 2. Abordagem de Desenvolvimento: "No Rewrite"
-- O conceito central do desenvolvimento atual foi a **não intervenção na base funcional**. A regra é: não aplicar nenhum conceito, arquivo ou biblioteca que já não esteja em uso.
-- A lógica Node.js preexistente (que utiliza os módulos nativos como `fs` e `csv-parse`) não foi reescrita nem substituída por abordagens *browser-native* como `FileReader`.
+- O conceito central do desenvolvimento atual foi a **não intervenção na base funcional**. A regra é: não aplicar nenhum conceito que ainda não esteja em uso, com exceção para conceitos fundamentais para o funcionamento do projeto, explicando o uso e utilizando da forma mais simples possível.
 
 ## 3. Integração com o DOM (Interface)
 - A lógica de conversão foi acoplada de forma passiva à interface. 

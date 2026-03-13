@@ -37,9 +37,40 @@ document.getElementById("csvForm").addEventListener("submit", function (event) {
 
         const json = JSON.stringify(result, null, 2);
 
-        document.getElementById("result").value = json;
+        const resultElement = document.getElementById("result");
+        resultElement.value = json;
+
+        const totalLines = json.split('\n').length;
+        resultElement.rows = totalLines;
     };
 
     reader.readAsText(file);
 
+});
+
+document.getElementById("copyBtn").addEventListener("click", function () {
+    const resultElement = document.getElementById("result");
+    if (resultElement.value) {
+        resultElement.select();
+        navigator.clipboard.writeText(resultElement.value);
+    }
+});
+
+document.getElementById("clearBtn").addEventListener("click", function () {
+    const resultElement = document.getElementById("result");
+    resultElement.value = "";
+    resultElement.rows = 3;
+});
+
+document.getElementById("downloadBtn").addEventListener("click", function () {
+    const resultElement = document.getElementById("result");
+    if (resultElement.value) {
+        const blob = new Blob([resultElement.value], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "result.json";
+        a.click();
+        URL.revokeObjectURL(url);
+    }
 });

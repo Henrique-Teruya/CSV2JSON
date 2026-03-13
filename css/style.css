@@ -29,5 +29,12 @@
 }
 
 .title {
-    margin: 3vh;
+    margin-bottom: 1.5vh;
+    margin-top: 3vh;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
