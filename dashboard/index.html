@@ -16,7 +16,7 @@
             <nav class="menu">
                 <ul>
                     <li><a href="../index.html">Convert .CSV</a></li>
-                    <li><a href="index.html"> .CSV</a></li>
+                    <li><a href="index.html"> Login</a></li>
                 </ul>
             </nav>
         </div>
@@ -27,17 +27,15 @@
 
         <!-- Upload Section -->
         <div class="upload">
-            <form action="">
+            <form action="" id="csvForm">
                 <div class="title">
                     <h2>Upload CSV File</h2>
                 </div>
-                <input type="file" name="file" id="file" accept=".csv">
+                <input type="file" name="file" id="file" accept=".csv" style="margin-left: 5%;">
                 <button type="submit">Convert</button>
                 <div class="content">
-                    <div class="title">
-                        <h2>Result</h2>
-                    </div>
-                    <textarea id="result" class="result-area__output"
+                    <h2>Result</h2>
+                    <textarea id="result" class="result-area__output" style="width: 100%; height: 30vh; margin-top: 3%;"
                         placeholder='Your converted JSON will appear here...' readonly></textarea>
                 </div>
             </form>
