@@ -13,11 +13,10 @@
             <div class="logo">
                 <h1>CSV2JSON</h1>
             </div>
-            <nav class="menu">
-                <ul>
-                    <li><a href="../index.html">Convert .CSV</a></li>
-                    <li><a href="index.html"> Login</a></li>
-                </ul>
+            <nav class="menu"
+                style="display: flex; flex-direction: row; justify-content: space-between; width: 15%; font-weight: bold;">
+                <p><a href="../dashboard/index.html">Convert .CSV</a></p>
+                <p><a href="../login/index.html"> Login</a></p>
             </nav>
         </div>
         <hr class="line-gray">
@@ -31,22 +30,29 @@
                 <div class="title">
                     <h2>Upload CSV File</h2>
                 </div>
-                <div class="btns">
-                    <input type="file" name="file" id="file" accept=".csv">
-                    <button type="submit">Convert</button>
-                </div>
-                <div class="dash-cont">
-                    <div class="title">
-                        <h2>Result</h2>
+                <div class="file-inf style=" flex-direction: column; align-items: center; width: 100%;">
+                    <div class="drag-drop-area" id="dropArea">
+                        <p>Arraste e solte o seu arquivo .csv aqui ou clique para procurar</p>
+                        <input type="file" name="file" id="file" accept=".csv" style="display: none;">
                     </div>
-                    <div class="btns">
-                        <button type="button" id="copyBtn">Copy JSON</button>
-                        <button type="button" id="downloadBtn">Download JSON</button>
-                        <button type="button" id="clearBtn">Clear</button>
+                    <div class="file-info btns" id="fileInfo" style="display: none;">
+                        <p id="fileName"></p>
+                        <button type="button" id="removeFileBtn"
+                            style="background-color: #a83232; margin-left: 10%;">Remover</button>
+                        <button type="submit">Convert</button>
                     </div>
-                    <textarea id="result" class="result-area__output" rows="3" style="width: 100%; margin-top: 0.5vh;"
-                        placeholder='Your converted JSON will appear here...' readonly></textarea>
-                </div>
+                    <div class="dash-cont">
+                        <div class="title">
+                            <h2>Result</h2>
+                        </div>
+                        <div class="btns">
+                            <button type="button" id="copyBtn">Copy JSON</button>
+                            <button type="button" id="downloadBtn">Download JSON</button>
+                            <button type="button" id="clearBtn">Clear</button>
+                        </div>
+                        <textarea id="result" class="result-area__output" rows="3" style="width: 100%; margin-top: 1vh;"
+                            placeholder='Your converted JSON will appear here...' readonly></textarea>
+                    </div>
             </form>
         </div>
     </main>
