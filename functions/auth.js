@@ -80,28 +80,53 @@ if (registerForm) {
             errorMsg.style.color = "#ff6b6b";
         }
 
-        // Salva a solicitação no Firestore em vez de criar a conta diretamente.
-        // Por segurança, NÃO armazenamos a senha. O administrador criará a conta
-        // e o usuário poderá definir/redefinir sua senha após a aprovação.
-        db.collection("solicitacoes").add({
-            email: email,
-            status: "pendente",
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        })
-            .then(function () {
-                // Exibe mensagem de sucesso e altera a cor para verde
-                if (errorMsg) {
-                    errorMsg.textContent = "Solicitação de cadastro enviada";
-                    errorMsg.style.color = "#4BB543"; // Verde para sucesso
+        // Verifica se o domínio é autorizado antes de prosseguir
+        if (!isAuthorized(email)) {
+            if (errorMsg) {
+                errorMsg.textContent = "Domínio de e-mail não autorizado.";
+            }
+            return;
+        }
+
+        // Verifica se o e-mail já existe na coleção de solicitações
+        db.collection("solicitacoes").where("email", "==", email).get()
+            .then(function (querySnapshot) {
+                if (!querySnapshot.empty) {
+                    if (errorMsg) {
+                        errorMsg.textContent = "Este e-mail já está em uso.";
+                    }
+                    return;
                 }
-                // Limpa os campos do formulário
-                registerForm.reset();
+
+                // Salva a solicitação no Firestore em vez de criar a conta diretamente.
+                // Por segurança, NÃO armazenamos a senha. O administrador criará a conta
+                // e o usuário poderá definir/redefinir sua senha após a aprovação.
+                db.collection("solicitacoes").add({
+                    email: email,
+                    status: "pendente",
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                    .then(function () {
+                        // Exibe mensagem de sucesso e altera a cor para verde
+                        if (errorMsg) {
+                            errorMsg.textContent = "Solicitação de cadastro enviada";
+                            errorMsg.style.color = "#4BB543"; // Verde para sucesso
+                        }
+                        // Limpa os campos do formulário
+                        registerForm.reset();
+                    })
+                    .catch(function (error) {
+                        console.error("Erro ao enviar solicitação: ", error);
+                        if (errorMsg) {
+                            errorMsg.textContent = "Erro ao enviar solicitação. Tente novamente.";
+                            errorMsg.style.color = "#ff6b6b";
+                        }
+                    });
             })
             .catch(function (error) {
-                console.error("Erro ao enviar solicitação: ", error);
+                console.error("Erro ao verificar e-mail: ", error);
                 if (errorMsg) {
-                    errorMsg.textContent = "Erro ao enviar solicitação. Tente novamente.";
-                    errorMsg.style.color = "#ff6b6b";
+                    errorMsg.textContent = "Erro ao processar solicitação. Tente novamente.";
                 }
             });
     });
