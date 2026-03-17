@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CSV2JSON</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -16,7 +17,7 @@
             <nav class="menu"
                 style="display: flex; flex-direction: row; justify-content: space-between; width: 15%; font-weight: bold;">
                 <p><a href="../dashboard/index.html">Convert .CSV</a></p>
-                <p><a href="../login/index.html"> Login</a></p>
+                <p><a href="#" id="authLink">Logout</a></p>
             </nav>
         </div>
         <hr class="line-gray">
@@ -56,6 +57,14 @@
             </form>
         </div>
     </main>
+
+    <!-- Firebase SDK (compat - para usar sem bundler) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+    <!-- Config + Auth + App Logic -->
+    <script src="../functions/firebase-config.js"></script>
+    <script src="../functions/auth.js"></script>
     <script src="../functions/index.js"></script>
 </body>
 

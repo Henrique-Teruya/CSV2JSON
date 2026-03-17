@@ -125,5 +125,13 @@ nav.menu a {
     text-decoration: none;
     color: #fff;
     background-color: transparent;
+    cursor: pointer;
+}
 
+.error-msg {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-top: 1vh;
+    text-align: center;
+    background-color: transparent;
 }
