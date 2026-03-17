@@ -58,9 +58,27 @@ if (logoutBtn) {
 // ---- PROTEÇÃO DE ROTA (Dashboard) ----
 // Verifica se estamos no dashboard e protege a página
 const isDashboard = window.location.pathname.includes("/dashboard");
+let currentUser = null;
+
+const convertCSVLink = document.getElementById("convertCSVLink");
+if (convertCSVLink) {
+    convertCSVLink.addEventListener("click", function (event) {
+        if (!currentUser) {
+            event.preventDefault();
+            const errorMsg = document.getElementById("errorMsg");
+            const message = "Você precisa estar logado para acessar o conversor de CSV.";
+            if (errorMsg) {
+                errorMsg.textContent = message;
+            } else {
+                alert(message);
+            }
+        }
+    });
+}
 
 auth.onAuthStateChanged(function (user) {
     const loginLink = document.getElementById("authLink");
+    currentUser = user;
 
     if (user) {
         // Usuário logado
