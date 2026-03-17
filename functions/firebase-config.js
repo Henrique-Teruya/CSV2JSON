@@ -20,3 +20,5 @@ firebase.initializeApp(firebaseConfig);
 
 // Exporta a instância de autenticação para uso global
 const auth = firebase.auth();
+
+const db = firebase.firestore();
