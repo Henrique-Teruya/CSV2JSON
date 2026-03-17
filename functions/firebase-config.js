@@ -20,3 +20,12 @@ firebase.initializeApp(firebaseConfig);
 
 // Exporta a instância de autenticação para uso global
 const auth = firebase.auth();
+const db = firebase.firestore();
+
+// ---- REGRAS DE SEGURANÇA (Firestore) ----
+// Recomenda-se configurar regras no Firebase Console para proteger a coleção 'solicitacoes'.
+// Exemplo básico: permitir escrita apenas para solicitações de cadastro e leitura apenas para admin.
+// match /solicitacoes/{docId} {
+//   allow create: if true;
+//   allow read, update, delete: if false; // Somente via console/Admin SDK
+// }
