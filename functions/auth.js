@@ -64,7 +64,7 @@ if (loginForm) {
     });
 }
 
-// ---- CADASTRO ----
+// ---- CADASTRO (Solicitação de Cadastro) ----
 const registerForm = document.getElementById("registerForm");
 if (registerForm) {
     registerForm.addEventListener("submit", function (event) {
@@ -74,40 +74,35 @@ if (registerForm) {
         const password = document.getElementById("password").value;
         const errorMsg = document.getElementById("errorMsg");
 
-        // Limpa mensagem de erro anterior
-        if (errorMsg) errorMsg.textContent = "";
+        // Limpa mensagem de erro anterior e define cor padrão (vermelho para erros)
+        if (errorMsg) {
+            errorMsg.textContent = "";
+            errorMsg.style.color = "#ff6b6b";
+        }
 
-        auth.createUserWithEmailAndPassword(email, password)
-            .then(function (userCredential) {
-                const user = userCredential.user;
-                if (!isAuthorized(user.email)) {
-                    // Usuário não autorizado → desloga e redireciona para aviso
-                    auth.signOut().then(() => {
-                        window.location.href = "../aviso/index.html";
-                    });
-                    return;
+        // Salva a solicitação no Firestore em vez de criar a conta diretamente.
+        // Por segurança, NÃO armazenamos a senha. O administrador criará a conta
+        // e o usuário poderá definir/redefinir sua senha após a aprovação.
+        db.collection("solicitacoes").add({
+            email: email,
+            status: "pendente",
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+            .then(function () {
+                // Exibe mensagem de sucesso e altera a cor para verde
+                if (errorMsg) {
+                    errorMsg.textContent = "Solicitação de cadastro enviada";
+                    errorMsg.style.color = "#4BB543"; // Verde para sucesso
                 }
-                // Cadastro bem-sucedido → redireciona para o dashboard
-                window.location.href = "../dashboard/index.html";
+                // Limpa os campos do formulário
+                registerForm.reset();
             })
             .catch(function (error) {
-                // Exibe mensagem de erro amigável
-                let message = "Erro ao realizar cadastro.";
-                switch (error.code) {
-                    case "auth/email-already-in-use":
-                        message = "Este e-mail já está em uso.";
-                        break;
-                    case "auth/invalid-email":
-                        message = "E-mail inválido.";
-                        break;
-                    case "auth/operation-not-allowed":
-                        message = "Operação não permitida.";
-                        break;
-                    case "auth/weak-password":
-                        message = "A senha é muito fraca.";
-                        break;
+                console.error("Erro ao enviar solicitação: ", error);
+                if (errorMsg) {
+                    errorMsg.textContent = "Erro ao enviar solicitação. Tente novamente.";
+                    errorMsg.style.color = "#ff6b6b";
                 }
-                if (errorMsg) errorMsg.textContent = message;
             });
     });
 }
