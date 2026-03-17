@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    background-color: #080808;
+    font-family: 'Comfortaa', sans-serif;
+    color: #ffffff;
+    background-color: #363638;
 }
 
 .header {
@@ -48,11 +50,13 @@
 .btns button {
     width: 20%;
     height: 5vh;
-    border-radius: 30px;
+    border-radius: 3vh;
     border: none;
-    background-color: #7b58ac;
-    color: white;
+    background-color: #ffe150;
+    color: #000000;
     font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
 }
 
 .login-cont {
@@ -66,16 +70,16 @@
     margin: 2vh;
     width: 50%;
     height: 5vh;
-    border-radius: 5px;
-    background-color: #141414;
-    color: white;
+    border-radius: 1vh;
+    background-color: #000000;
+    color: #ffffff;
     font-size: 1rem;
-    border-color: white;
+    border: 0.2vh solid #d3d3d3;
     padding-left: 2%;
 }
 
 .login-input::placeholder {
-    color: #b7b7b7;
+    color: #d3d3d3;
 }
 
 .login-cont form {
@@ -89,12 +93,14 @@
 .login-cont form button {
     width: 20%;
     height: 5vh;
-    border-radius: 30px;
+    border-radius: 3vh;
     border: none;
-    background-color: #7b58ac;
-    color: white;
+    background-color: #ffe150;
+    color: #000000;
     font-size: 1rem;
     margin-top: 2vh;
+    font-weight: 700;
+    cursor: pointer;
 }
 
 .login-title {
@@ -103,7 +109,7 @@
 
 .drag-drop-area {
     width: 100%;
-    border: 0.3vh dashed #9e9e9e;
+    border: 0.3vh dashed #d3d3d3;
     border-radius: 2%;
     padding: 10vh 5%;
     text-align: center;
@@ -117,8 +123,8 @@
 }
 
 .drag-drop-area.dragover {
-    background-color: #171717;
-    border-color: #fff;
+    background-color: #000000;
+    border-color: #ffe150;
 }
 
 nav.menu a {
@@ -134,4 +140,17 @@ nav.menu a {
     margin-top: 1vh;
     text-align: center;
     background-color: transparent;
+}
+
+.aviso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.aviso h1 {
+    font-size: 5rem;
+    text-align: center;
 }
