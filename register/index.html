@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CSV2JSON</title>
+    <title>Cadastro - CSV2JSON</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -24,19 +24,18 @@
     </div>
     <main class="content" style="justify-content: center; align-items: center;">
         <div class="login-cont">
-            <form id="loginForm">
+            <form id="registerForm">
                 <div class="login-title" style="margin-bottom: 5vh;">
-                    <h2>Login</h2>
+                    <h2>Cadastro</h2>
                 </div>
-                <input class="login-input" name="username" id="username" type="email" placeholder="E-mail" required>
+                <input class="login-input" name="email" id="email" type="email" placeholder="E-mail" required>
                 <input class="login-input" type="password" name="password" id="password" placeholder="Senha" required>
                 <p id="errorMsg" class="error-msg"></p>
-                <button class="button" type="submit">Login</button>
-                <p style="margin-top: 2vh; background-color: transparent;">Não tem uma conta? <a
-                        href="../register/index.html"
-                        style="color: #ffe150; background-color: transparent; text-decoration: none; font-weight: bold;">Cadastre-se</a>
+                <button class="button" type="submit">Cadastrar</button>
+                <p style="margin-top: 2vh; background-color: transparent;">Já tem uma conta? <a
+                        href="../login/index.html"
+                        style="color: #ffe150; background-color: transparent; text-decoration: none; font-weight: bold;">Login</a>
                 </p>
-
             </form>
         </div>
     </main>
