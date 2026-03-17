@@ -45,6 +45,46 @@ if (loginForm) {
     });
 }
 
+// ---- CADASTRO ----
+const registerForm = document.getElementById("registerForm");
+if (registerForm) {
+    registerForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const errorMsg = document.getElementById("errorMsg");
+
+        // Limpa mensagem de erro anterior
+        if (errorMsg) errorMsg.textContent = "";
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(function () {
+                // Cadastro bem-sucedido → redireciona para o dashboard
+                window.location.href = "../dashboard/index.html";
+            })
+            .catch(function (error) {
+                // Exibe mensagem de erro amigável
+                let message = "Erro ao realizar cadastro.";
+                switch (error.code) {
+                    case "auth/email-already-in-use":
+                        message = "Este e-mail já está em uso.";
+                        break;
+                    case "auth/invalid-email":
+                        message = "E-mail inválido.";
+                        break;
+                    case "auth/operation-not-allowed":
+                        message = "Operação não permitida.";
+                        break;
+                    case "auth/weak-password":
+                        message = "A senha é muito fraca.";
+                        break;
+                }
+                if (errorMsg) errorMsg.textContent = message;
+            });
+    });
+}
+
 // ---- LOGOUT ----
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
