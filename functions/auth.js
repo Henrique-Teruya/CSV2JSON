@@ -38,7 +38,7 @@ if (loginForm) {
                     return;
                 }
 
-                // 👇 NOVA LÓGICA
+                // Redireciona para admin para admin e usuário para dashboard
                 if (user.email === ADMIN_EMAIL) {
                     window.location.href = "../admin/index.html";
                 } else {

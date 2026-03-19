@@ -6,6 +6,11 @@ auth.onAuthStateChanged(user => {
     }
 });
 
+// Inicializamos um app secundário do Firebase. O intuito é criar novos usuários
+// SEM desconectar o administrador atual. O Firebase por padrão muda o usuário logado
+// ao criar uma nova conta caso estejamos no app principal.
+const secondaryApp = firebase.initializeApp(firebaseConfig, "SecondaryApp");
+
 // CARREGAR USUÁRIOS PENDENTES
 db.collection("pending_users")
     .where("status", "==", "pending")
@@ -44,19 +49,22 @@ db.collection("pending_users")
         });
     });
 
-// ✅ APROVAR USUÁRIO
+// APROVAR USUÁRIO
 function approveUser(id, email, password) {
 
-    auth.createUserWithEmailAndPassword(email, password)
+    // Usamos o secondaryApp para criar o usuário e evitar alterar o auth logado na sessão principal (admin)
+    secondaryApp.auth().createUserWithEmailAndPassword(email, password)
+        .then(() => {
+            // Deslogamos o usuário recém criado do app secundário por segurança
+            return secondaryApp.auth().signOut();
+        })
         .then(() => {
             return db.collection("pending_users").doc(id).update({
                 status: "approved"
             });
         })
         .then(() => {
-            alert("Usuário aprovado!");
-
-            // 👇 remove da tela SEM reload
+            // 👇 remove da tela SEM reload e SEM alert como solicitado
             const element = document.getElementById("user-" + id);
             if (element) element.remove();
 
@@ -66,13 +74,12 @@ function approveUser(id, email, password) {
         });
 }
 
-// ❌ REJEITAR USUÁRIO
+// REJEITAR USUÁRIO
 function rejectUser(id) {
 
     db.collection("pending_users").doc(id).delete()
         .then(() => {
-            alert("Solicitação rejeitada.");
-
+            // Remove da tela SEM reload e SEM alert
             const element = document.getElementById("user-" + id);
             if (element) element.remove();
         })
