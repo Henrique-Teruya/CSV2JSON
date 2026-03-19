@@ -83,6 +83,26 @@ if (registerForm) {
         if (errorMsg) errorMsg.textContent = "";
 
         try {
+            // 1. Verifica se já existe a solicitação (pendente ou aprovada) no Firestore
+            const snapshot = await db.collection("pending_users").where("email", "==", email).get();
+            if (!snapshot.empty) {
+                if (errorMsg) {
+                    errorMsg.style.color = "red";
+                    errorMsg.textContent = "Este e-mail já possui cadastro ou solicitação pendente.";
+                }
+                return;
+            }
+
+            // 2. Verifica se o usuário já existe diretamente no Firebase Auth (ex: admin ou conta criada manualmente)
+            const methods = await auth.fetchSignInMethodsForEmail(email);
+            if (methods.length > 0) {
+                if (errorMsg) {
+                    errorMsg.style.color = "red";
+                    errorMsg.textContent = "Este e-mail já está cadastrado no sistema.";
+                }
+                return;
+            }
+
             // NÃO cria usuário no Auth
             // Apenas salva no Firestore
 
