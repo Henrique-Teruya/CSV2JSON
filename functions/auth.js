@@ -6,6 +6,7 @@
 // Placeholder para o domínio autorizado. Substitua pelo domínio real dos parceiros.
 const AUTHORIZED_DOMAIN = "@gmail.com";
 
+const ADMIN_EMAIL = "henriqueteruya12@gmail.com";
 /**
  * Verifica se o usuário está autorizado com base no e-mail.
  */
@@ -29,15 +30,20 @@ if (loginForm) {
         auth.signInWithEmailAndPassword(email, password)
             .then(function (userCredential) {
                 const user = userCredential.user;
+
                 if (!isAuthorized(user.email)) {
-                    // Usuário não autorizado → desloga e redireciona para aviso
                     auth.signOut().then(() => {
                         window.location.href = "../aviso/index.html";
                     });
                     return;
                 }
-                // Login bem-sucedido → redireciona para o dashboard
-                window.location.href = "../dashboard/index.html";
+
+                // 👇 NOVA LÓGICA
+                if (user.email === ADMIN_EMAIL) {
+                    window.location.href = "../admin/index.html";
+                } else {
+                    window.location.href = "../dashboard/index.html";
+                }
             })
             .catch(function (error) {
                 // Exibe mensagem de erro amigável

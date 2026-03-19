@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - CSV2JSON</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>CSV2JSON</h1>
+            </div>
+            <nav class="menu"
+                style="display: flex; flex-direction: row; justify-content: space-between; width: 20%; font-weight: bold;">
+                <p><a href="../dashboard/index.html">Dashboard</a></p>
+                <p><a href="#" id="authLink">Logout</a></p>
+            </nav>
+        </div>
+        <hr class="line-gray">
+    </div>
+
+    <!-- CONTENT -->
+    <main class="content">
+        <div class="dash-cont">
+            <div class="title">
+                <h2>Solicitações de Cadastro</h2>
+            </div>
+
+            <div id="userList"></div>
+        </div>
+    </main>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <!-- Scripts -->
+    <script src="../functions/firebase-config.js"></script>
+    <script src="../functions/auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
