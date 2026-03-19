@@ -6,11 +6,11 @@ auth.onAuthStateChanged(user => {
     }
 });
 
-// CARREGAR USUÁRIOS PENDENTES
+// CARREGAR USUÁRIOS PENDENTES COM ATUALIZAÇÃO EM TEMPO REAL
 db.collection("pending_users")
     .where("status", "==", "pending")
-    .get()
-    .then(snapshot => {
+    .onSnapshot(snapshot => {
+        list.innerHTML = "";
 
         if (snapshot.empty) {
             list.innerHTML = "<p>Nenhuma solicitação pendente.</p>";
@@ -46,8 +46,11 @@ db.collection("pending_users")
 
 // ✅ APROVAR USUÁRIO
 function approveUser(id, email, password) {
+    // Instância secundária para evitar deslogar o admin
+    const secondaryApp = firebase.initializeApp(firebaseConfig, "Secondary");
+    const secondaryAuth = secondaryApp.auth();
 
-    auth.createUserWithEmailAndPassword(email, password)
+    secondaryAuth.createUserWithEmailAndPassword(email, password)
         .then(() => {
             return db.collection("pending_users").doc(id).update({
                 status: "approved"
@@ -55,26 +58,19 @@ function approveUser(id, email, password) {
         })
         .then(() => {
             alert("Usuário aprovado!");
-
-            // 👇 remove da tela SEM reload
-            const element = document.getElementById("user-" + id);
-            if (element) element.remove();
-
+            return secondaryApp.delete();
         })
         .catch(err => {
             console.error(err);
+            secondaryApp.delete();
         });
 }
 
 // ❌ REJEITAR USUÁRIO
 function rejectUser(id) {
-
     db.collection("pending_users").doc(id).delete()
         .then(() => {
             alert("Solicitação rejeitada.");
-
-            const element = document.getElementById("user-" + id);
-            if (element) element.remove();
         })
         .catch(err => {
             console.error(err);
