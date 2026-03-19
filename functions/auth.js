@@ -77,9 +77,40 @@ if (registerForm) {
         if (errorMsg) errorMsg.textContent = "";
 
         try {
-            // NÃO cria usuário no Auth
-            // Apenas salva no Firestore
+            // 1. Verifica se o domínio é autorizado
+            if (!isAuthorized(email)) {
+                if (errorMsg) {
+                    errorMsg.style.color = "red";
+                    errorMsg.textContent = "Este domínio de e-mail não é autorizado.";
+                }
+                return;
+            }
 
+            // 2. Verifica se o usuário já está cadastrado no Firebase Auth
+            const methods = await auth.fetchSignInMethodsForEmail(email);
+            if (methods.length > 0) {
+                if (errorMsg) {
+                    errorMsg.style.color = "red";
+                    errorMsg.textContent = "Este e-mail já está cadastrado.";
+                }
+                return;
+            }
+
+            // 3. Verifica se já existe uma solicitação pendente no Firestore
+            const snapshot = await db.collection("pending_users")
+                .where("email", "==", email)
+                .where("status", "==", "pending")
+                .get();
+
+            if (!snapshot.empty) {
+                if (errorMsg) {
+                    errorMsg.style.color = "red";
+                    errorMsg.textContent = "Já existe uma solicitação pendente para este e-mail.";
+                }
+                return;
+            }
+
+            // Se passou por todas as verificações, salva no Firestore
             await db.collection("pending_users").add({
                 email: email,
                 password: password,
