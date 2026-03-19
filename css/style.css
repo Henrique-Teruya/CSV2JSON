@@ -59,6 +59,18 @@
     cursor: pointer;
 }
 
+.button {
+    width: 20%;
+    height: 5vh;
+    border-radius: 3vh;
+    border: none;
+    background-color: #ffe150;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 .login-cont {
     display: flex;
     flex-direction: column;

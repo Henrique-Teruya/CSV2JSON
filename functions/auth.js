@@ -24,7 +24,7 @@ if (loginForm) {
         const password = document.getElementById("password").value;
         const errorMsg = document.getElementById("errorMsg");
 
-        // Limpa mensagem de erro anterior
+        // Avisa que o usuário não está autorizado
         if (errorMsg) errorMsg.textContent = "";
 
         auth.signInWithEmailAndPassword(email, password)

@@ -1,14 +1,12 @@
 const list = document.getElementById("userList");
 
-
-// 🔒 PROTEÇÃO (só você acessa)
 auth.onAuthStateChanged(user => {
     if (!user || user.email !== "henriqueteruya12@gmail.com") {
         window.location.href = "../login/index.html";
     }
 });
 
-// 🔄 CARREGAR USUÁRIOS PENDENTES
+// CARREGAR USUÁRIOS PENDENTES
 db.collection("pending_users")
     .where("status", "==", "pending")
     .get()
@@ -33,12 +31,11 @@ db.collection("pending_users")
             div.innerHTML = `
                 <p><strong>Email:</strong> ${data.email}</p>
 
-                <button onclick="approveUser('${doc.id}', '${data.email}', '${data.password}')">
+                <button onclick="approveUser('${doc.id}', '${data.email}', '${data.password}')" class="button" style="margin: 2vh;">
                     Aprovar
                 </button>
 
-                <button onclick="rejectUser('${doc.id}')"
-                    style="background-color: #a83232; margin-left: 10px;">
+                <button onclick="rejectUser('${doc.id}')" class="button" style="background-color: #a83232;">
                     Rejeitar
                 </button>
             `;
