@@ -13,9 +13,11 @@ document.getElementById("csvForm").addEventListener("submit", function (event) {
 
         const text = e.target.result;
 
+        const clean = (val) => (typeof val === 'string' ? val.replace(/['"]/g, '').trim() : val);
+
         const lines = text.split("\n");
 
-        const headers = lines[0].split(",");
+        const headers = lines[0].split(",").map(h => clean(h).toLowerCase());
 
         const result = [];
 
@@ -25,12 +27,16 @@ document.getElementById("csvForm").addEventListener("submit", function (event) {
 
             const values = lines[i].split(",");
 
-            const obj = {
-                name: values[0].trim(),
-                price: parseFloat(values[1]),
-                quantity: parseInt(values[2]),
-                ean: values[3].trim()
-            };
+            const obj = {};
+
+            for (let j = 0; j < headers.length; j++) {
+
+                let val = clean(values[j] || "");
+
+                const numVal = Number(val.replace(",", "."));
+
+                obj[headers[j]] = val === "" ? null : isNaN(numVal) ? val : numVal;
+            }
 
             result.push(obj);
         }

@@ -1,0 +1,338 @@
+[
+  {
+    "name": "CRYSTAL C/GAS PET 500ML",
+    "price": 3.49,
+    "quantity": 19,
+    "ean": "7894900531008"
+  },
+  {
+    "name": "CRYSTAL S/GAS PET 500ML",
+    "price": 3.49,
+    "quantity": 22,
+    "ean": "7894900530001"
+  },
+  {
+    "name": "ABSOLUT SPRITE LT 269ML",
+    "price": 10.9,
+    "quantity": 2,
+    "ean": "7894900337006"
+  },
+  {
+    "name": "CHICLETE TRIDENT HORT/MENTA 8G",
+    "price": 2.99,
+    "quantity": 5,
+    "ean": "7895800304211"
+  },
+  {
+    "name": "MENTOS PURE WHITE 56G",
+    "price": 15.9,
+    "quantity": 2,
+    "ean": "78922334"
+  },
+  {
+    "name": "MENTOS UP2U 56G",
+    "price": 15.9,
+    "quantity": 1,
+    "ean": "7895144293080"
+  },
+  {
+    "name": "BOLD COOKIES & CREAM",
+    "price": 14.9,
+    "quantity": 2,
+    "ean": "0602883960336"
+  },
+  {
+    "name": "BOLD CRUNCH CARAMELO E CHOCOLATE 50G",
+    "price": 14.9,
+    "quantity": 1,
+    "ean": "7898755180510"
+  },
+  {
+    "name": "CORONA LN 330 ML",
+    "price": 9.99,
+    "quantity": 27,
+    "ean": "7891149108718"
+  },
+  {
+    "name": "HEINEKEN LN 330ML",
+    "price": 9.99,
+    "quantity": 14,
+    "ean": "78936683"
+  },
+  {
+    "name": "HEINEKEN LT 350 ML",
+    "price": 7.99,
+    "quantity": 12,
+    "ean": "7896045506873"
+  },
+  {
+    "name": "HEINEKEN ZERO LT 350ML",
+    "price": 7.19,
+    "quantity": 9,
+    "ean": "896045506910"
+  },
+  {
+    "name": "CHOCOLATE AO LEITE NESTLE 80G",
+    "price": 12.9,
+    "quantity": 5,
+    "ean": "7891000369098"
+  },
+  {
+    "name": "CHOCOLATE MEIO AMARGO NESTLE 80G",
+    "price": 12.9,
+    "quantity": 1,
+    "ean": "7891000368572"
+  },
+  {
+    "name": "CHOCOLATE SULFLAIR NESTLE 80G",
+    "price": 12.9,
+    "quantity": 5,
+    "ean": "7891000329856"
+  },
+  {
+    "name": "KINDER CHOCOLATE 12G",
+    "price": 3.49,
+    "quantity": 17,
+    "ean": "80050315"
+  },
+  {
+    "name": "NESTLE CHOCO BISCUIT 90G",
+    "price": 12.9,
+    "quantity": 6,
+    "ean": "7891000377543"
+  },
+  {
+    "name": "NESTLE CHOCO BISCUIT AMENDOIN",
+    "price": 12.9,
+    "quantity": 2,
+    "ean": "7891000377642"
+  },
+  {
+    "name": "NUTELLA B-READY 22G",
+    "price": 5.99,
+    "quantity": 1,
+    "ean": "7898024397915"
+  },
+  {
+    "name": "PALITO DE DENTE FIAT LUX",
+    "price": 1.99,
+    "quantity": 7,
+    "ean": "7896007952144"
+  },
+  {
+    "name": "GIN BEEFEATER 750ML",
+    "price": 79.9,
+    "quantity": 1,
+    "ean": "5000329002537"
+  },
+  {
+    "name": "WHISKY JOHNNIE WALKER RED LABEL",
+    "price": 129,
+    "quantity": 1,
+    "ean": "5000267013602"
+  },
+  {
+    "name": "ENERGETICO RED BULL 250ML",
+    "price": 10.49,
+    "quantity": 4,
+    "ean": "611269991000"
+  },
+  {
+    "name": "ENERGETICO RED BULL ZERO 250 ML",
+    "price": 10.49,
+    "quantity": 5,
+    "ean": "611269101713"
+  },
+  {
+    "name": "MONSTER GREEN LT 473ML",
+    "price": 10.49,
+    "quantity": 1,
+    "ean": "070847022015"
+  },
+  {
+    "name": "MONSTER NO SUGAR LT 473ML",
+    "price": 10.49,
+    "quantity": 4,
+    "ean": "7898938890076"
+  },
+  {
+    "name": "CONDICIONADOR SÓLIDO HIDRATAÇÃO PROFUNDA 80G",
+    "price": 44.9,
+    "quantity": 2,
+    "ean": "7898996330651"
+  },
+  {
+    "name": "COTONETE COTTONBABY 75 UNID",
+    "price": 3.99,
+    "quantity": 4,
+    "ean": "7896227620014"
+  },
+  {
+    "name": "DESODORANTE DOVE 200ml",
+    "price": 25.9,
+    "quantity": 1,
+    "ean": "7891150068780"
+  },
+  {
+    "name": "FIO DENTAL COLGATE 50M",
+    "price": 16.9,
+    "quantity": 1,
+    "ean": "7891024183007"
+  },
+  {
+    "name": "SABONETE DOVE ORIGINAL 90G",
+    "price": 7.29,
+    "quantity": 2,
+    "ean": "7898422746759"
+  },
+  {
+    "name": "SABONETE LIMPEZA PROFUNDA 80G",
+    "price": 34.9,
+    "quantity": 2,
+    "ean": "7898996330613"
+  },
+  {
+    "name": "SHAMPOO SÓLIDO LIMPEZA PROFUNDA 80G",
+    "price": 44.9,
+    "quantity": 2,
+    "ean": "7898996330644"
+  },
+  {
+    "name": "SABÃO LÍQUIDO OMO LAV. PER. 900ML",
+    "price": 19.99,
+    "quantity": 2,
+    "ean": "7891150064928"
+  },
+  {
+    "name": "PILHA DURACELL AA2 2 UNID",
+    "price": 14.9,
+    "quantity": 1,
+    "ean": "041333001005"
+  },
+  {
+    "name": "PILHA DURACELL AAA2 2 UNID",
+    "price": 14.9,
+    "quantity": 2,
+    "ean": "041333001074"
+  },
+  {
+    "name": "COCA COLA LT 350ML",
+    "price": 4.49,
+    "quantity": 23,
+    "ean": "7894900010015"
+  },
+  {
+    "name": "COCA COLA SEM AÇUCAR LT 350ML",
+    "price": 4.49,
+    "quantity": 17,
+    "ean": "7894900700015"
+  },
+  {
+    "name": "GUARANA ANTARCTICA SEM ACUCAR LT 350ML",
+    "price": 4.49,
+    "quantity": 13,
+    "ean": "7891991000727"
+  },
+  {
+    "name": "FANDANGOS PRESUNGO 105G",
+    "price": 12.9,
+    "quantity": 3,
+    "ean": "7892840822880"
+  },
+  {
+    "name": "LAYS SOUR CREAM 80G",
+    "price": 13.9,
+    "quantity": 3,
+    "ean": "7892840816780"
+  },
+  {
+    "name": "PRINGLES CREMDE DE CEBOLA 105G",
+    "price": 15.39,
+    "quantity": 8,
+    "ean": "7896004006239"
+  },
+  {
+    "name": "PRINGLES ORIGINAL 105G",
+    "price": 15.39,
+    "quantity": 8,
+    "ean": "7896004006277"
+  },
+  {
+    "name": "120 CABERNET SAUVIGNON 750ml",
+    "price": 54.9,
+    "quantity": 2,
+    "ean": "7804330311101"
+  },
+  {
+    "name": "CASAL GARCIA VERDE 750 ML",
+    "price": 69.9,
+    "quantity": 2,
+    "ean": "5601096201309"
+  },
+  {
+    "name": "THEREZOPOLIS BOCK LATA 350ML",
+    "price": 7.49,
+    "quantity": 1,
+    "ean": "7896371000410"
+  },
+  {
+    "name": "HERSHEY’S DARK 60%",
+    "price": 14.9,
+    "quantity": 2,
+    "ean": "7899970400902"
+  },
+  {
+    "name": "FRUIT-TELLA MORANGO CREME 41G",
+    "price": 3.19,
+    "quantity": 14,
+    "ean": "7895144028019"
+  },
+  {
+    "name": "BOLD LEITE & AVELÃ 60G",
+    "price": 14.99,
+    "quantity": 11,
+    "ean": "602883960565"
+  },
+  {
+    "name": "MONSTER ULTRA FIESTA LT 473ML",
+    "price": 10.49,
+    "quantity": 2,
+    "ean": "7898938890113"
+  },
+  {
+    "name": "NESTLE CHOCO BISCUIT CHOCOLATE 90G",
+    "price": 12.9,
+    "quantity": 1,
+    "ean": "7891000377598"
+  },
+  {
+    "name": "YOPRO DOCE DE LEITE 15G",
+    "price": 12.9,
+    "quantity": 1,
+    "ean": "7891025125013"
+  },
+  {
+    "name": "MARETTI BRUSCHETTE SOUR CREAM 85G",
+    "price": 13.9,
+    "quantity": 4,
+    "ean": "3800205877325"
+  },
+  {
+    "name": "MARETTI BRUSCHETTE ALHO 85G",
+    "price": 13.9,
+    "quantity": 5,
+    "ean": "3800205870517"
+  },
+  {
+    "name": "POPCORNERS WHITE CHEDDAR 57G",
+    "price": 12.9,
+    "quantity": 3,
+    "ean": "7892840821739"
+  },
+  {
+    "name": "THEREZOPOLIS LT 350ML",
+    "price": 5.29,
+    "quantity": 12,
+    "ean": "7896371000007"
+  }
+]

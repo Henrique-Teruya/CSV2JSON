@@ -52,22 +52,18 @@ db.collection("pending_users")
 // APROVAR USUÁRIO
 function approveUser(id, email, password) {
 
-    // Usamos o secondaryApp para criar o usuário e evitar alterar o auth logado na sessão principal (admin)
-    secondaryApp.auth().createUserWithEmailAndPassword(email, password)
+    // Atualizamos o status no Firestore primeiro para garantir que a remoção visual aconteça
+    db.collection("pending_users").doc(id).update({ status: "approved" })
         .then(() => {
-            // Deslogamos o usuário recém criado do app secundário por segurança
-            return secondaryApp.auth().signOut();
-        })
-        .then(() => {
-            return db.collection("pending_users").doc(id).update({
-                status: "approved"
-            });
-        })
-        .then(() => {
-            // 👇 remove da tela SEM reload e SEM alert como solicitado
             const element = document.getElementById("user-" + id);
             if (element) element.remove();
 
+            // Usamos o secondaryApp para criar o usuário e evitar alterar o auth logado na sessão principal (admin)
+            return secondaryApp.auth().createUserWithEmailAndPassword(email, password);
+        })
+        .then(() => {
+            // Deslogamos o usuário recém criado do app secundário por segurança
+            return secondaryApp.auth().signOut();
         })
         .catch(err => {
             console.error(err);
