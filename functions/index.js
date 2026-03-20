@@ -33,6 +33,8 @@ document.getElementById("csvForm").addEventListener("submit", function (event) {
 
                 let val = clean(values[j] || "");
 
+                if (headers[j] === "ean") { obj[headers[j]] = val; continue; }
+
                 const numVal = Number(val.replace(",", "."));
 
                 obj[headers[j]] = val === "" ? null : isNaN(numVal) ? val : numVal;
